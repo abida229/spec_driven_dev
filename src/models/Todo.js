@@ -49,7 +49,17 @@ class Todo {
       }
 
       // Sorting
-      const sortField = filters.sort?.replace(/^-/, '') || 'created_at';
+      const sortFieldMap = {
+        'createdAt': 'created_at',
+        'updatedAt': 'updated_at',
+        'created_at': 'created_at',
+        'updated_at': 'updated_at',
+        'title': 'title',
+        'priority': 'priority',
+        'completed': 'completed'
+      };
+      const requestedSort = filters.sort?.replace(/^-/, '') || 'created_at';
+      const sortField = sortFieldMap[requestedSort] || 'created_at';
       const sortOrder = filters.sort?.startsWith('-') ? 'ASC' : 'DESC';
       sql += ` ORDER BY ${sortField} ${sortOrder}`;
 
@@ -75,7 +85,17 @@ class Todo {
       }
 
       // Sorting
-      const sortField = filters.sort?.replace(/^-/, '') || 'created_at';
+      const sortFieldMap = {
+        'createdAt': 'created_at',
+        'updatedAt': 'updated_at',
+        'created_at': 'created_at',
+        'updated_at': 'updated_at',
+        'title': 'title',
+        'priority': 'priority',
+        'completed': 'completed'
+      };
+      const requestedSort = filters.sort?.replace(/^-/, '') || 'created_at';
+      const sortField = sortFieldMap[requestedSort] || 'created_at';
       const sortOrder = filters.sort?.startsWith('-') ? 'ASC' : 'DESC';
       sql += ` ORDER BY ${sortField} ${sortOrder}`;
 
